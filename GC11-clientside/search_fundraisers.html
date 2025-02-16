@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Fundraisers</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #00695c;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: white;
+            padding: 0.5em 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #004d40;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #80cbc4;
+            color: #004d40;
+            border: 2px solid #004d40;
+        }
+
+        main {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 150px;
+            /* Adjusted margin to avoid overlap with header */
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #004d40;
+            font-size: 2em;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #004d40;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #80cbc4;
+            border-radius: 8px;
+            font-size: 1em;
+            color: #004d40;
+        }
+
+        button {
+            background-color: #00695c;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        #search-results {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #search-results div {
+            background-color: #e8f5e9;
+            border: 2px solid #80cbc4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #search-results h3 {
+            margin: 0 0 10px;
+            color: #004d40;
+        }
+
+        #search-results p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                width: 90%;
+            }
+
+            #search-results div {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Search Fundraisers</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="search_fundraisers.html">Search Fundraisers</a></li>
+                <li><a href="donation.html">Donation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Find a Fundraiser by Category</h2>
+        <form id="search-form">
+            <label for="category">Category:</label>
+            <select id="category">
+                <!-- Categories will be dynamically populated here -->
+            </select>
+            <button type="submit">Search</button>
+        </form>
+        <div id="search-results"></div>
+    </main>
+
+    <footer>
+        <p>© 2024 Crowdfunding Platform - Empowering Causes</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

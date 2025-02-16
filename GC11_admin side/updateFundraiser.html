@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+    <title>Update Page</title>
+
+    <head>
+        <body>
+          <header>
+            <nav>
+              <ul>
+         <a href="/home"><span>Home</span> 
+         <a href="/addFundraiser"><span>Add Fundraiser</span></a>
+         <a href="/updateFundraiser"><span>UpdateFundraiser</span></a>
+        </ul>
+      </nav>
+  </header>
+   
+<main>
+         
+                          
+                <center>
+<h1> UPDATE FUNDRAISER</h1>
+<h3>Donations made for a fundraiser</h3>
+
+<form name="updateForm"  onsubmit="return validateForm()">
+  <p>
+      <label for="fundraiserID">FundraiserID:</label>
+      <input type="text" id="fundraiserID" name="fundraiserID" 
+      />
+     
+ 
+          <p>
+            <label for="organizer">Organizer:</label>
+            <input type="text" id="organizer" name="Organizer" 
+              />
+            <span id="organizer-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="caption">Caption:</label>
+            <input type="text" id="caption" name="Caption" 
+                />
+            <span id="caption-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="targetFunding">Target Funding:</label>
+            <input type="text" id="targetFunding" name="TargetFunding"  />
+            <span id="targetFunding-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="currentFunding">Current Funding:</label>
+            <input type="text" id="currentFunding" name="currentFunding" 
+               />
+            <span id="currentFunding-error" class="error-message"></span>
+        </p>
+        <p>
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" 
+             />
+            <span id="city-error" class="error-message"></span>
+        </p>  
+        
+        <p>
+            <label for="active">Active:</label>
+            <input type="text" id="active" name="active"  />
+            <span id="active-error" class="error-message"></span>
+        </p>
+
+          <p>
+            <label for="categoryID">Category ID:</label>
+            <input type="text" id="categoryID" name="categoryID" />
+            <span id="categoryID-error" class="error-message"></span>
+        </p>
+  
+
+    <p>
+        <input type="submit" value="Save" name="Submit" onsubmit="return updateFundraiser(fundraiserId)" />                           
+    </p>
+        </p>
+</form>
+    
+<p>
+    <input type="submit" value="List Donations" name="Submit" onsubmit="return listDonation()" />                           
+</p>
+
+
+<div id="responseMessage"></div>
+           
+<script>
+
+function getID(){
+
+
+}
+
+
+//validate function
+function validateForm(){
+
+// Get values from the form using DOM
+const organizer = document.getElementById("organizer").value.trim();
+const caption = document.getElementById("caption").value.trim();
+const targetFunding = document.getElementById("targetFunding").value.trim();
+const currentFunding = document.getElementById("currentFunding").value.trim();
+const city = document.getElementById("city").value.trim();
+const active = document.getElementById("active").value.trim();
+const categoryID = document.getElementById("categoryID").value.trim();
+
+
+//     // Validate the form. When all fields empty send alert
+if (!organizer || !caption||!targetFunding||!currentFunding||!city|| !atcive|| !categoryID) {
+      alert("All fields are required! Please insert some data!");
+      return;
+  }
+}
+
+
+//list donations
+function listDonations(fundraiserId){
+
+fetch('http://localhost:3060/api/fundraiser/:id')
+              .then(response => response.json())
+              .then(data => {
+
+                document.getElementById('data').textConent = "Got the data";
+              
+                               
+                const dataDiv=document.getElementById('data');
+                dataDiv.innerHTML="";
+    //if data length is greater than 0 create element that prints all records of the fundraiser and catergory table joined
+                if(data.length>0){
+                  data.forEach( fundraiser => {
+                      const newP=document.createElement("p");
+                      newP.textContent=` Fundraiser ID:${fundraiser.FUNDRAISER_ID }Donation ID: ${fundraiser.DONATION_ID} Date: ${fundraiser.DATE }, Amount: ${fundraiser.AMOUNT }, GIVER: ${fundraiser.GIVER };
+`;
+    
+                      dataDiv.appendChild(newP);
+                  });
+    
+                }
+                else{
+                  dataDiv.textContent="No fundraiser data";  //if length is less than of equal to 0, print no fundraiser data
+                }})
+              }
+
+
+
+              //update Fundraiser
+              async function updateFundraiser(fundraiserId){
+  const response = await fetch(`app.put('/api/fundraiser/:id'=${id}`);
+            const record = await response.json();
+
+            if (fundraiser) {
+                document.getElementById('fundraiserId').value = fundraiser.id;
+                document.getElementById("organizer").value = fundraiser.organizer;
+                document.getElementById("caption").value = fundraiser.caption;
+                document.getElementById("targetFunding").value = fundraiser.targetFunding;
+                document.getElementById("currentFunding").value = fundraiser.currentFunding;
+                document.getElementById("city").value = fundraiser.city;
+                document.getElementById("active").value = fundraiser.active;
+                document.getElementById('updateForm').style.display = 'block';
+            } else {
+                alert('Record not found!');
+            }
+        }
+
+        async function saveUpdate(event) {
+            event.preventDefault();
+
+            const putData = new FormData(document.getElementById('updateForm'));
+
+            const response = await fetch('http://localhost:3060/api/fundraisers ${fundraiserId}', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.text();
+            alert(result);
+            location.reload(); // Reload the page to see the updated records
+        }
+
+      
+
+</script>
+
+</center>
+
+
+</main>
+
+<footer>
+  <p>© 2024 Crowdfunding Platform - Empowering Causes</p>
+</footer>
+</body>
+        <style>
+
+        /*background colour  */
+body {
+
+  background-color: #a2aec3;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Nav Menu */
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #00695c;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: rgb(4, 0, 0);
+            padding: 0.5em 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #004d40;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #80cbc4;
+            color: #004d40;
+            border: 2px solid #004d40;
+        }
+
+        main {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #004d40;
+            font-size: 2em;
+        }
+
+        #fundraisers-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .fundraiser-item {
+            background-color: #e8f5e9;
+            border: 2px solid #80cbc4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+
+        .fundraiser-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .fundraiser-item h3 {
+            margin: 0 0 10px;
+            color: #004d40;
+        }
+
+        .fundraiser-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .fundraiser-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .fundraiser-item img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        </style>
+
+        </body>
+
+    </head>
+</html>

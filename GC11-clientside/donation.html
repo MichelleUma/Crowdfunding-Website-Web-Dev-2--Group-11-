@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Crowdfunding Platform</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #00695c;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: white;
+            padding: 0.5em 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #004d40;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #80cbc4;
+            color: #004d40;
+            border: 2px solid #004d40;
+        }
+
+        main {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        h2 {
+            margin: 20px 0;
+            font-size: 2em;
+            color: #004d40;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #80cbc4;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #004d40;
+        }
+
+        button {
+            background-color: #00695c;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: green;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Make a Donation</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="search_fundraisers.html">Search Fundraisers</a></li>
+                <li><a href="donation.html">Donation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Donate to Fundraiser</h2>
+        <div id="fundraiser-info"></div> <!-- This is where the fundraiser info will be displayed -->
+        <form id="donation-form">
+            <input type="text" id="giver" placeholder="Your Name" required>
+            <input type="number" id="amount" placeholder="Donation Amount (AUD)" required>
+            <input type="hidden" id="fundraiser-id">
+            <button type="submit">Donate</button>
+            <div id="message"></div>
+        </form>
+    </main>
+
+    <footer>
+        <p>© 2024 Crowdfunding Platform - Empowering Causes</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

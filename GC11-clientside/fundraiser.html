@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraiser Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background-color: #00695c;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            top: 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+            color: white;
+            padding: 0.5em 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            background-color: #004d40;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #80cbc4;
+            color: #004d40;
+            border: 2px solid #004d40;
+        }
+
+        main {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+            margin-top: 120px;
+            /* More margin to avoid overlap with header */
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 2em;
+            color: #004d40;
+        }
+
+        .details {
+            margin-top: 20px;
+        }
+
+        .details p {
+            line-height: 1.5;
+            color: #555;
+        }
+
+        .donate-button {
+            display: block;
+            width: 100%;
+            background-color: #00695c;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #004d40;
+        }
+
+        footer {
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Fundraiser Details</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="search_fundraisers.html">Search Fundraisers</a></li>
+                <li><a href="donation.html">Donation</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="fundraiser-details">
+        <!-- Fundraiser details will be dynamically populated here -->
+        <div class="details">
+            <h2>Fundraiser Title</h2>
+            <p><strong>Organiser:</strong> Name</p>
+            <p><strong>Target Funding:</strong> $15,000 AUD</p>
+            <p><strong>Current Funding:</strong> $7,500 AUD</p>
+            <p><strong>City:</strong> Brisbane</p>
+            <button class="donate-button">Donate Now</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 Crowdfunding Platform - Empowering Causes</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
